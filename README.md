@@ -141,7 +141,7 @@ Run the following Python script:
 python combine_lora.py \
     --peft /home/weiguan/FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300 \
     --checkpoint /home/weiguan/llmmodel/Qwen3-1.7B \
-    --save_path /home/weiguan/FLORA/outputs/prefinetuning/base_model
+    --save_path /home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM
 ```
 **⚙️ Arguments**
 
@@ -149,7 +149,7 @@ python combine_lora.py \
 | -------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
 | `--peft`       | Path to the LoRA fine-tuned checkpoint | `/home/weiguan/FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300` |
 | `--checkpoint` | Path to the base LLM model             | `/home/weiguan/llmmodel/Qwen3-1.7B`                                            |
-| `--save_path`  | Path to save the merged model          | `/home/weiguan/FLORA/outputs/prefinetuning/base_model`                         |
+| `--save_path`  | Path to save the merged model          | `/home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM`                         |
 
 This script merges the LoRA adapter weights into the base model and saves a standalone model (graph-oriented LLM) ready for downstream training or inference.
 
@@ -162,7 +162,7 @@ Run the following command (e.g., for the Coding-AF domain):
 ```
 python train.py \
     --data_path ./data/Coding-AF \
-    --llm_model_path /home/weiguan/FLORA/outputs/prefinetuning/base_model \
+    --llm_model_path /home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM \
     --st_model_path /home/weiguan/llmmodel/all-MiniLM-L6-v2
 ```
 
@@ -171,7 +171,7 @@ python train.py \
 | Argument                | Description                             | Example / Default                                      |
 | ----------------------- | --------------------------------------- | ------------------------------------------------------ |
 | `--data_path`           | Path to the root dataset directory      | `./data/Coding-AF`                                     |
-| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model (graph-oriented LLM) | `/home/weiguan/FLORA/outputs/prefinetuning/base_model` |
+| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model (graph-oriented LLM) | `/home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM` |
 | `--st_model_path`       | Path to the sentence transformer model  | `/home/weiguan/llmmodel/all-MiniLM-L6-v2`              |
 | `--hidden_dim`          | Hidden layer dimension                  | `256`                                                  |
 | `--n_gnn_layers`        | Number of GNN layers                    | `2`                                                    |

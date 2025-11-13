@@ -9,7 +9,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--peft', required=True,  type=str, help='Path to the LoRA fine-tuned checkpoint, e.g. /home/weiguan/GLOW/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300')
     parser.add_argument('--checkpoint', required=True, type=str, help='Path to the original base LLM model, e.g. /home/weiguan/llmmodel/Qwen3-1.7B')
-    parser.add_argument('--save_path', required=True, type=str, help='Path to save the merged model, e.g. /home/weiguan/GLOW/outputs/prefinetuning/base_model')
+    parser.add_argument('--save_path', required=True, type=str, help='Path to save the merged model, e.g. /home/weiguan/GLOW/outputs/prefinetuning/graph_oriented_LLM')
 
     args = parser.parse_args()
 

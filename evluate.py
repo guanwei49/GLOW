@@ -142,11 +142,11 @@ def eval_main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Train GNN model on custom graph dataset')
+    parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str, default='/home/weiguan/GLOW/data/Coding-AF', help='Path to the root data directory')
     parser.add_argument('--llm_model_path', type=str,
-                        default='/home/weiguan/GLOW/outputs/prefinetuning/base_model',
-                        help='Path to the LLM model')
+                        default='/home/weiguan/GLOW/outputs/prefinetuning/graph_oriented_LLM',
+                        help='Path to the pre-finetuned (merged) LLM model')
     parser.add_argument('--st_model_path', type=str, default='/home/weiguan/llmmodel/all-MiniLM-L6-v2',
                         help='Path to the sentence transformer')
     parser.add_argument('--cross_system', type=str, default='/home/weiguan/GLOW/data/Coding-AF', help='model path when cross system')

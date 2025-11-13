@@ -230,7 +230,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--llm_model_path', type=str, required=True,
-        help='Path to the pre-finetuned (merged) LLM model (e.g., /home/weiguan/GLOW/outputs/prefinetuning/base_model).'
+        help='Path to the pre-finetuned (merged) LLM model (e.g., /home/weiguan/GLOW/outputs/prefinetuning/graph_oriented_LLM).'
     )
     parser.add_argument(
         '--st_model_path', type=str, required=True,
