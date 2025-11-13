@@ -87,7 +87,7 @@ To build the dataset for LLM Pre-finetuning, run the following command:
 This script processes the raw dataset and constructs formatted data suitable for LLM Pre-finetuning.
 
 
-### 4. LLM Pre-Finetuning
+### 4. LLM Pre-Finetuning (Generating graph-oriented LLM)
 #### ⚙️ Configuration
 
 Open the script **`pre-finetuning_LLM.sh`** and set the following parameters:
@@ -151,7 +151,7 @@ python combine_lora.py \
 | `--checkpoint` | Path to the base LLM model             | `/home/weiguan/llmmodel/Qwen3-1.7B`                                            |
 | `--save_path`  | Path to save the merged model          | `/home/weiguan/FLORA/outputs/prefinetuning/base_model`                         |
 
-This script merges the LoRA adapter weights into the base model and saves a standalone model ready for downstream training or inference.
+This script merges the LoRA adapter weights into the base model and saves a standalone model (graph-oriented LLM) ready for downstream training or inference.
 
 
 
@@ -171,7 +171,7 @@ python train.py \
 | Argument                | Description                             | Example / Default                                      |
 | ----------------------- | --------------------------------------- | ------------------------------------------------------ |
 | `--data_path`           | Path to the root dataset directory      | `./data/Coding-AF`                                     |
-| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model | `/home/weiguan/FLORA/outputs/prefinetuning/base_model` |
+| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model (graph-oriented LLM) | `/home/weiguan/FLORA/outputs/prefinetuning/base_model` |
 | `--st_model_path`       | Path to the sentence transformer model  | `/home/weiguan/llmmodel/all-MiniLM-L6-v2`              |
 | `--hidden_dim`          | Hidden layer dimension                  | `256`                                                  |
 | `--n_gnn_layers`        | Number of GNN layers                    | `2`                                                    |
