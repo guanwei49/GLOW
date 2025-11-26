@@ -93,8 +93,8 @@ def eval_main(args):
     model_save_dir = os.path.join(model_save_dir, 'ckpt')
     os.makedirs(model_save_dir, exist_ok=True)
 
-    best_model_path = os.path.join(model_save_dir, f'best_model_cls_weight_{args.contrastive_weight}_margin_{args.margin}.pth')
-    final_model_path = os.path.join(model_save_dir, f'final_model_cls_weight_{args.contrastive_weight}_margin_{args.margin}.pth')
+    best_model_path = os.path.join(model_save_dir, f'best_model.pth')
+    final_model_path = os.path.join(model_save_dir, f'final_model.pth')
 
     # CSV 路径
     csv_path = os.path.join(f'results.csv')

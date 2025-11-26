@@ -183,7 +183,7 @@ def main(args):
     import os 
     if not os.path.exists(model_save_dir):
         os.makedirs(model_save_dir)
-    best_model_path = os.path.join(model_save_dir, f'best_model_cls_weight_{args.contrastive_weight}_margin_{args.margin}.pth')
+    best_model_path = os.path.join(model_save_dir, f'best_model.pth')
 
     best_val_acc = 0
     no_improve = 0
@@ -214,7 +214,7 @@ def main(args):
             no_improve += 1
             print(f'Epoch {epoch}, Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f}, LR: {current_lr}')
 
-    final_model_path = os.path.join(model_save_dir, f'final_model_cls_weight_{args.contrastive_weight}_margin_{args.margin}.pth')
+    final_model_path = os.path.join(model_save_dir, f'final_model.pth')
     torch.save(model.state_dict(), final_model_path)
     # ===== 在训练结束后再打印一次结果 =====
     print(f'\nTraining finished. Best model saved at {best_model_path} with Val Acc: {best_val_acc:.4f} at epoch {best_epoch}')
