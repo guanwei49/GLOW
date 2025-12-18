@@ -143,13 +143,13 @@ def eval_main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, default='/home/weiguan/GLOW/data/Coding-AF', help='Path to the root data directory')
+    parser.add_argument('--data_path', type=str, default='GLOW/data/Coding-AF', help='Path to the root data directory')
     parser.add_argument('--llm_model_path', type=str,
-                        default='/home/weiguan/GLOW/outputs/prefinetuning/graph_oriented_LLM',
+                        default='GLOW/outputs/prefinetuning/graph_oriented_LLM',
                         help='Path to the pre-finetuned (merged) LLM model')
-    parser.add_argument('--st_model_path', type=str, default='/home/weiguan/llmmodel/all-MiniLM-L6-v2',
+    parser.add_argument('--st_model_path', type=str, default='llmmodel/all-MiniLM-L6-v2',
                         help='Path to the sentence transformer')
-    parser.add_argument('--cross_system', type=str, default='/home/weiguan/GLOW/data/Coding-AF', help='model path when cross system')
+    parser.add_argument('--cross_system', type=str, default='GLOW/data/Coding-AF', help='model path when cross system')
     parser.add_argument('--hidden_dim', type=int, default=512, help='Hidden layer dimension')
     parser.add_argument('--n_gnn_layers', type=int, default=3, help='Number of GNN layers')
     parser.add_argument('--batch_size', type=int, default=512, help='Batch size for training and evaluation')

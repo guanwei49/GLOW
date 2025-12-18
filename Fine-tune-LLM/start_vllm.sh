@@ -1,5 +1,5 @@
 python -m vllm.entrypoints.openai.api_server \
-    --model /home/weiguan/llmmodel/Qwen3-30B-A3B-Instruct-2507 \
+    --model llmmodel/Qwen3-30B-A3B-Instruct-2507 \
     --max-model-len 10240 \
     --task generate \
     --tensor-parallel-size 4 \

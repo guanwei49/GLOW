@@ -85,7 +85,7 @@ def compute_metrics(eval_pred, compute_result=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', type=str, default='/home/weiguan/llmmodel/Qwen3-1.7B')
+    parser.add_argument('--model_path', type=str, default='llmmodel/Qwen3-1.7B')
     parser.add_argument('--ckpt_path', type=str, default='')
     parser.add_argument('--data_root', type=str, default='./data')
     parser.add_argument('--data_subset', type=str, default='Coding-AF')

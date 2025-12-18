@@ -230,11 +230,11 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--llm_model_path', type=str, required=True,
-        help='Path to the pre-finetuned (merged) LLM model (e.g., /home/weiguan/GLOW/outputs/prefinetuning/graph_oriented_LLM).'
+        help='Path to the pre-finetuned (merged) LLM model (e.g., GLOW/outputs/prefinetuning/graph_oriented_LLM).'
     )
     parser.add_argument(
         '--st_model_path', type=str, required=True,
-        help='Path to the Sentence Transformer model (e.g., /home/weiguan/llmmodel/all-MiniLM-L6-v2).'
+        help='Path to the Sentence Transformer model (e.g., llmmodel/all-MiniLM-L6-v2).'
     )
 
     # === Model and training hyperparameters ===

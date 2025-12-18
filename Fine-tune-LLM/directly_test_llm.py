@@ -78,8 +78,8 @@ Respond with 'Yes' or 'No' to indicate whether the workflow is suitable for comp
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Batch evaluate workflow suitability using vLLM API.")
-    parser.add_argument("--model_name", type=str, default="/home/weiguan/llmmodel/Qwen3-30B-A3B-Instruct-2507")
-    parser.add_argument("--data_path", type=str, default="/home/weiguan/FLORA/data/Coding-AF")
+    parser.add_argument("--model_name", type=str, default="llmmodel/Qwen3-30B-A3B-Instruct-2507")
+    parser.add_argument("--data_path", type=str, default="FLORA/data/Coding-AF")
     parser.add_argument("--max_tokens", type=int, default=2048)
     parser.add_argument("--temperature", type=float, default=1)
     parser.add_argument("--api_url", type=str, default="http://localhost:7999/v1/chat/completions")

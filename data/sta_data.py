@@ -16,7 +16,7 @@ Provide a single token representing the embedding of this graph."""
 data_list =  ['Coding-AF', 'Coding-GD', 'Math-AF', 'Math-GD', 'Reason-AF', 'Reason-GD']
 
 # 模型路径
-st_model_path = "/home/weiguan/llmmodel/all-MiniLM-L6-v2"
+st_model_path = "llmmodel/all-MiniLM-L6-v2"
 
 # 初始化 tokenizer 和 encoder
 print("Initializing tokenizer and SentenceTransformer model...")
@@ -37,7 +37,7 @@ for data in data_list:
     # 遍历 train 和 test 文件
     # for split in ["train"]:
     for split in ["train", "val", "test"]:
-        jsonl_path = f"/home/weiguan/GLOW/data/{data}/{split}.jsonl"
+        jsonl_path = f"GLOW/data/{data}/{split}.jsonl"
         print(f"Reading file: {jsonl_path} ...")
 
         with open(jsonl_path, "r", encoding="utf-8") as f:

@@ -6,9 +6,9 @@ NUM_GPUS=$((NUM_GPUS + 1))
 
 NPROC_PER_NODE=${NUM_GPUS} \
 swift sft \
-    --model /home/weiguan/llmmodel/Qwen3-1.7B \
+    --model llmmodel/Qwen3-1.7B \
     --train_type lora \
-    --dataset /home/weiguan/GLOW/data/prefinetuning.jsonl \
+    --dataset GLOW/data/prefinetuning.jsonl \
     --output_dir outputs/prefinetuning \
     --torch_dtype bfloat16 \
     --num_train_epochs 20 \

@@ -104,13 +104,13 @@ Open the script **`pre-finetuning_LLM.sh`** and set the following parameters:
 2. **Model path** — specify your base LLM model, e.g:
 
    ```bash
-   --model /home/weiguan/llmmodel/Qwen3-1.7B
+   --model llmmodel/Qwen3-1.7B
    ```
 
 3. **Dataset path** — specify the dataset path generated in the previous step, e.g:
 
    ```bash
-   --dataset /home/weiguan/GLOW/data/prefinetuning.jsonl
+   --dataset GLOW/data/prefinetuning.jsonl
    ```
 
 #### 📈 Run
@@ -139,17 +139,17 @@ Run the following Python script:
 
 ```
 python combine_lora.py \
-    --peft /home/weiguan/FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300 \
-    --checkpoint /home/weiguan/llmmodel/Qwen3-1.7B \
-    --save_path /home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM
+    --peft FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300 \
+    --checkpoint llmmodel/Qwen3-1.7B \
+    --save_path FLORA/outputs/prefinetuning/graph_oriented_LLM
 ```
 **⚙️ Arguments**
 
 | Argument       | Description                            | Example                                                              |
 | -------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
-| `--peft`       | Path to the LoRA fine-tuned checkpoint | `/home/weiguan/FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300` |
-| `--checkpoint` | Path to the base LLM model             | `/home/weiguan/llmmodel/Qwen3-1.7B`                                            |
-| `--save_path`  | Path to save the merged model          | `/home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM`                         |
+| `--peft`       | Path to the LoRA fine-tuned checkpoint | `FLORA/outputs/prefinetuning/v0-20251015-105151/checkpoint-7300` |
+| `--checkpoint` | Path to the base LLM model             | `llmmodel/Qwen3-1.7B`                                            |
+| `--save_path`  | Path to save the merged model          | `FLORA/outputs/prefinetuning/graph_oriented_LLM`                         |
 
 This script merges the LoRA adapter weights into the base model and saves a standalone model (graph-oriented LLM) ready for downstream training or inference.
 
@@ -162,8 +162,8 @@ Run the following command (e.g., for the Coding-AF domain):
 ```
 python train.py \
     --data_path ./data/Coding-AF \
-    --llm_model_path /home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM \
-    --st_model_path /home/weiguan/llmmodel/all-MiniLM-L6-v2
+    --llm_model_path FLORA/outputs/prefinetuning/graph_oriented_LLM \
+    --st_model_path llmmodel/all-MiniLM-L6-v2
 ```
 
 **⚙️ Arguments**
@@ -171,8 +171,8 @@ python train.py \
 | Argument                | Description                             | Example / Default                                      |
 | ----------------------- | --------------------------------------- | ------------------------------------------------------ |
 | `--data_path`           | Path to the root dataset directory      | `./data/Coding-AF`                                     |
-| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model (graph-oriented LLM) | `/home/weiguan/FLORA/outputs/prefinetuning/graph_oriented_LLM` |
-| `--st_model_path`       | Path to the sentence transformer model  | `/home/weiguan/llmmodel/all-MiniLM-L6-v2`              |
+| `--llm_model_path`      | Path to the pre-finetuned (merged) LLM model (graph-oriented LLM) | `FLORA/outputs/prefinetuning/graph_oriented_LLM` |
+| `--st_model_path`       | Path to the sentence transformer model  | `llmmodel/all-MiniLM-L6-v2`              |
 | `--hidden_dim`          | Hidden layer dimension                  | `256`                                                  |
 | `--n_gnn_layers`        | Number of GNN layers                    | `2`                                                    |
 | `--dropout`             | Dropout rate                            | `0.2`                                                  |
