@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 random.seed(42)
 
-def generate_data(nodes, edge_index):
+def generate_data(nodes, edge_index, time):
     G = nx.DiGraph()
     G.add_nodes_from(nodes.keys())
     G.add_edges_from(edge_index)
@@ -84,35 +84,36 @@ def generate_data(nodes, edge_index):
     dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}],  'task_type': 'REACH'})
 
     # 5. Key Node Identification
-    choice = random.choice(["source", "sink"])
-    if choice == "source":
-        q = ("Identify the list of source nodes (in-degree=0). "
-             "Answer format: [node_id, node_id, ...] sorted by node id. "
-             "If none exist, answer an empty list [].")
-        source_nodes = sorted([n for n in G.nodes if G.in_degree(n) == 0])
-        a = f"{source_nodes}"
-    else:
-        q = ("Identify the list of sink nodes (out-degree=0). "
-             "Answer format: [node_id, node_id, ...] sorted by node id. "
-             "If none exist, answer an empty list [].")
-        sink_nodes = sorted([n for n in G.nodes if G.out_degree(n) == 0])
-        a = f"{sink_nodes}"
-    q = user_prompt + q + " Begin by documenting your analysis and conclude with your final answer enclosed in <answer> </answer> tags."
-    dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}], 'task_type': 'KNI'})
+    if time == 1 or time == 0:
+        if time == 0:
+            q = ("Identify the list of source nodes (in-degree=0). "
+                 "Answer format: [node_id, node_id, ...] sorted by node id. "
+                 "If none exist, answer an empty list [].")
+            source_nodes = sorted([n for n in G.nodes if G.in_degree(n) == 0])
+            a = f"{source_nodes}"
+        elif time == 1:
+            q = ("Identify the list of sink nodes (out-degree=0). "
+                 "Answer format: [node_id, node_id, ...] sorted by node id. "
+                 "If none exist, answer an empty list [].")
+            sink_nodes = sorted([n for n in G.nodes if G.out_degree(n) == 0])
+            a = f"{sink_nodes}"
+        q = user_prompt + q + " Begin by documenting your analysis and conclude with your final answer enclosed in <answer> </answer> tags."
+        dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}], 'task_type': 'KNI'})
 
     # 6. Topological Sorting
-    q = ("Perform a topological sort of the graph. "
-         "If multiple valid orders exist, prefer the one where nodes with smaller IDs come earlier. "
-         "Answer format: [node_id, node_id, ...]. "
-         "If the graph contains a cycle and topological sorting is not possible, answer 'No valid topological order'.")
-    try:
-        topo_order = list(nx.lexicographical_topological_sort(G))
-        a = f"{topo_order}"
-    except nx.NetworkXUnfeasible:
-        a = "No valid topological order"
+    if time == 0:
+        q = ("Perform a topological sort of the graph. "
+             "If multiple valid orders exist, prefer the one where nodes with smaller IDs come earlier. "
+             "Answer format: [node_id, node_id, ...]. "
+             "If the graph contains a cycle and topological sorting is not possible, answer 'No valid topological order'.")
+        try:
+            topo_order = list(nx.lexicographical_topological_sort(G))
+            a = f"{topo_order}"
+        except nx.NetworkXUnfeasible:
+            a = "No valid topological order"
 
-    q = user_prompt + q + " Begin by documenting your analysis and conclude with your final answer enclosed in <answer> </answer> tags."
-    dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}], 'task_type': 'TSORT'})
+        q = user_prompt + q + " Begin by documenting your analysis and conclude with your final answer enclosed in <answer> </answer> tags."
+        dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}], 'task_type': 'TSORT'})
 
     return dataset
 
@@ -156,8 +157,8 @@ if __name__ == "__main__":
             nodes = w["nodes"]
             edge_index = w["edge_index"]
             sub_dataset = w["sub_dataset"]
-            for _ in range(3):  # each workflow generate three times
-                dataset = generate_data(nodes, edge_index)
+            for time in range(3):  # each workflow generate three times
+                dataset = generate_data(nodes, edge_index,time)
                 for d in dataset:
                     d["id"] = f"{id}"
                     d['sub_dataset'] = sub_dataset
@@ -171,8 +172,8 @@ if __name__ == "__main__":
             nodes = w["nodes"]
             edge_index = w["edge_index"]
             sub_dataset = w["sub_dataset"]
-            for _ in range(3):  # each workflow generate three times
-                dataset = generate_data(nodes, edge_index)
+            for time in range(3):  # each workflow generate three times
+                dataset = generate_data(nodes, edge_index,time)
                 for d in dataset:
                     d["id"] = f"{id}"
                     d['sub_dataset'] = sub_dataset
