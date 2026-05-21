@@ -151,7 +151,7 @@ if __name__ == '__main__':
                         help='Path to the sentence transformer')
     parser.add_argument('--cross_system', type=str, default='GLOW/data/Coding-AF', help='model path when cross system')
     parser.add_argument('--hidden_dim', type=int, default=256, help='Hidden layer dimension')
-    parser.add_argument('--n_gnn_layers', type=int, default=3, help='Number of GNN layers')
+    parser.add_argument('--n_gnn_layers', type=int, default=2, help='Number of GNN layers')
     parser.add_argument('--batch_size', type=int, default=512, help='Batch size for training and evaluation')
     parser.add_argument('--seed', type=int, default=42, help='Random seed for reproducibility')
     parser.add_argument('--n_mlplayers', type=int, default=2, help='Number of MLP layers for task embedding')
