@@ -158,7 +158,7 @@ class Predictor(nn.Module):
         
         self.loss_fn = nn.BCEWithLogitsLoss()
 
-        self.contrastive_loss_fn = BatchMeancontrastiveLoss(margin=margin)
+        self.contrastive_loss_fn = BatchMeanContrastiveLoss(margin=margin)
         self.contrastive_weight = contrastive_weight  # 权重超参
 
     def forward(self, llm_embedding, nodes_embedding, edge_index, batch, task_embedding, label=None,**kwargs):
