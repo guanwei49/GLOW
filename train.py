@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import AutoConfig
 from custom_dataset import get_dataloader, get_pretrain_dataloader
-from evluate import eval_main
+from evaluate import eval_main
 from model import Predictor
 import numpy as np
 import random
