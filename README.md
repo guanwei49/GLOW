@@ -1,6 +1,6 @@
-# GLOW: Graph-Language Co-Reasoning for Agentic Workflow Performance Prediction #
+# GLOW: Graph-Language Co-Encoding for Agentic Workflow Performance Prediction #
 
-Official Implementation of "GLOW: Graph-Language Co-Reasoning for Agentic Workflow Performance Prediction"
+Official Implementation of "GLOW: Graph-Language Co-Encoding for Agentic Workflow Performance Prediction"
 
 ![architecture.png](architecture.png)
 
